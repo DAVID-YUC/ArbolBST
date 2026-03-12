@@ -6,9 +6,7 @@ package arboles;
 
 
 import java.awt.BorderLayout;
-import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import javax.swing.JInternalFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -32,9 +30,7 @@ public class VistaArbol extends javax.swing.JFrame {
     }
 
     private void inicializar(boolean enable) {
-        this.InOrden.setEnabled(enable);
-        this.PostOrden.setEnabled(enable);
-        this.PreOrden.setEnabled(enable);
+        
     }
 
     /**
@@ -46,56 +42,54 @@ public class VistaArbol extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        impresion = new javax.swing.JTextArea();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
+        jPanelInicial = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
+        jInternalArbolB = new javax.swing.JInternalFrame();
         botonInsertar = new javax.swing.JButton();
-        InOrden = new javax.swing.JButton();
-        PreOrden = new javax.swing.JButton();
-        PostOrden = new javax.swing.JButton();
         txtdato = new javax.swing.JTextField();
+        lblImpresion = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuInorden = new javax.swing.JMenuItem();
+        jMenuPreorden = new javax.swing.JMenuItem();
+        jMenuPostorden = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Panel de Pruebas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
-        jPanel2.setOpaque(false);
+        jPanelInicial.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelInicial.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Panel de Pruebas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
+        jPanelInicial.setOpaque(false);
 
-        jScrollPane1.setOpaque(false);
-
-        impresion.setEditable(false);
-        impresion.setColumns(20);
-        impresion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        impresion.setRows(5);
-        impresion.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultados de operaciones"));
-        impresion.setOpaque(false);
-        jScrollPane1.setViewportView(impresion);
-
+        jDesktopPane1.setBackground(new java.awt.Color(0, 51, 255));
         jDesktopPane1.setOpaque(false);
 
-        jInternalFrame2.setIconifiable(true);
-        jInternalFrame2.setMaximizable(true);
-        jInternalFrame2.setResizable(true);
-        jInternalFrame2.setEnabled(false);
-        jInternalFrame2.setFocusCycleRoot(false);
-        jInternalFrame2.setVisible(true);
+        jInternalArbolB.setIconifiable(true);
+        jInternalArbolB.setMaximizable(true);
+        jInternalArbolB.setResizable(true);
+        jInternalArbolB.setEnabled(false);
+        jInternalArbolB.setFocusCycleRoot(false);
+        jInternalArbolB.setVisible(true);
 
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 828, Short.MAX_VALUE)
+        javax.swing.GroupLayout jInternalArbolBLayout = new javax.swing.GroupLayout(jInternalArbolB.getContentPane());
+        jInternalArbolB.getContentPane().setLayout(jInternalArbolBLayout);
+        jInternalArbolBLayout.setHorizontalGroup(
+            jInternalArbolBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 528, Short.MAX_VALUE)
         );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        jInternalArbolBLayout.setVerticalGroup(
+            jInternalArbolBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 404, Short.MAX_VALUE)
         );
 
-        jDesktopPane1.add(jInternalFrame2);
-        jInternalFrame2.setBounds(-30, 10, 840, 440);
+        jDesktopPane1.add(jInternalArbolB);
+        jInternalArbolB.setBounds(20, 10, 540, 440);
 
         botonInsertar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         botonInsertar.setText("Insertar");
@@ -105,87 +99,107 @@ public class VistaArbol extends javax.swing.JFrame {
             }
         });
 
-        InOrden.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        InOrden.setText("InOrden");
-        InOrden.addActionListener(new java.awt.event.ActionListener() {
+        lblImpresion.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InOrdenActionPerformed(evt);
+                btnBuscarActionPerformed(evt);
             }
         });
 
-        PreOrden.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        PreOrden.setText("PreOrden");
-        PreOrden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PreOrdenActionPerformed(evt);
-            }
-        });
-
-        PostOrden.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
-        PostOrden.setText("PostOrden");
-        PostOrden.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PostOrdenActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 806, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(InOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(PreOrden)
-                        .addGap(12, 12, 12)
-                        .addComponent(PostOrden)))
-                .addGap(124, 124, 124)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
+        javax.swing.GroupLayout jPanelInicialLayout = new javax.swing.GroupLayout(jPanelInicial);
+        jPanelInicial.setLayout(jPanelInicialLayout);
+        jPanelInicialLayout.setHorizontalGroup(
+            jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInicialLayout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(1, 1, 1)
-                                .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(InOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PreOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PostOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblImpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelInicialLayout.createSequentialGroup()
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(btnBuscar)
+                                .addComponent(botonInsertar)))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
+        jPanelInicialLayout.setVerticalGroup(
+            jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelInicialLayout.createSequentialGroup()
+                .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelInicialLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
+                        .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelInicialLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblImpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
+
+        jMenu1.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu1.setIcon(new javax.swing.ImageIcon("C:\\Users\\mayno\\OneDrive\\Documentos\\UMG CICLO 4\\PROGRAMACION II\\ImagenesPortada\\Administrador\\estadisticas.png")); // NOI18N
+        jMenu1.setText("Recorridos");
+
+        jMenuInorden.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        jMenuInorden.setText("InOrden");
+        jMenuInorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuInordenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuInorden);
+
+        jMenuPreorden.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_D, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        jMenuPreorden.setText("PreOrden");
+        jMenuPreorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPreordenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuPreorden);
+
+        jMenuPostorden.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        jMenuPostorden.setText("PostOrden");
+        jMenuPostorden.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPostordenActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuPostorden);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setForeground(new java.awt.Color(255, 255, 255));
+        jMenu2.setIcon(new javax.swing.ImageIcon("C:\\Users\\mayno\\OneDrive\\Documentos\\UMG CICLO 4\\PROGRAMACION II\\ImagenesPortada\\Administrador\\reloj.png")); // NOI18N
+        jMenu2.setText("Opciones");
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanelInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jPanelInicial.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,31 +208,35 @@ public class VistaArbol extends javax.swing.JFrame {
         insertar();
     }//GEN-LAST:event_botonInsertarActionPerformed
 
-    private void InOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InOrdenActionPerformed
+    private void jMenuInordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInordenActionPerformed
         inorden();
-    }//GEN-LAST:event_InOrdenActionPerformed
+    }//GEN-LAST:event_jMenuInordenActionPerformed
 
-    private void PreOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrdenActionPerformed
-        preorden();
-    }//GEN-LAST:event_PreOrdenActionPerformed
-
-    private void PostOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PostOrdenActionPerformed
+    private void jMenuPostordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPostordenActionPerformed
         postorden();
-    }//GEN-LAST:event_PostOrdenActionPerformed
+    }//GEN-LAST:event_jMenuPostordenActionPerformed
+
+    private void jMenuPreordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPreordenActionPerformed
+        preorden();
+    }//GEN-LAST:event_jMenuPreordenActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        buscar();
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     public void complementos(){
         this.repintarArbol();
     }
     private void repintarArbol() {
         this.jDesktopPane1.removeAll();
-        Rectangle tamaño = this.jInternalFrame2.getBounds();
-        this.jInternalFrame2 = null;
-        this.jInternalFrame2 = new JInternalFrame("Representación gráfica", true);
-        this.jDesktopPane1.add(this.jInternalFrame2, JLayeredPane.DEFAULT_LAYER);
-        this.jInternalFrame2.setVisible(true);
-        this.jInternalFrame2.setBounds(tamaño);
-        this.jInternalFrame2.setEnabled(false);
-        this.jInternalFrame2.add(this.simulador.getDibujo(), BorderLayout.CENTER);
+        Rectangle tamaño = this.jInternalArbolB.getBounds();
+        this.jInternalArbolB = null;
+        this.jInternalArbolB = new JInternalFrame("Representación gráfica", true);
+        this.jDesktopPane1.add(this.jInternalArbolB, JLayeredPane.DEFAULT_LAYER);
+        this.jInternalArbolB.setVisible(true);
+        this.jInternalArbolB.setBounds(tamaño);
+        this.jInternalArbolB.setEnabled(false);
+        this.jInternalArbolB.add(this.simulador.getDibujo(), BorderLayout.CENTER);
     }
 
     /**
@@ -235,32 +253,29 @@ public class VistaArbol extends javax.swing.JFrame {
     public void inorden(){
         String recorrido = null;
         recorrido = this.simulador.inOrden();
-        this.impresion.setText("");
-        this.impresion.setText(recorrido);
+        this.lblImpresion.setText(recorrido);
     }
     
     public void preorden(){
         String recorrido = null;
         recorrido = this.simulador.preOrden();
-        this.impresion.setText("");
-        this.impresion.setText(recorrido);
+        this.lblImpresion.setText(recorrido);
     }
     
     public void postorden (){
         String recorrido = null;
         recorrido = this.simulador.postOrden();
-        this.impresion.setText("");
-        this.impresion.setText(recorrido);
+        this.lblImpresion.setText(recorrido);
     }
     
     public void insertar (){
     try {
             int dato = Integer.parseInt(txtdato.getText());
             if (this.simulador.insertar(dato)) {
-                JOptionPane.showMessageDialog(null, "El dato fue insertado correctamente", " ...", 1);
                 this.inicializar(true);
                 
                 complementos();
+                txtdato . setText("" ); // limpia el campo
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudo insertar el dato", "Intenta de nuevo...", 0);
@@ -268,16 +283,33 @@ public class VistaArbol extends javax.swing.JFrame {
         }
     }
     
+    public void buscar (){
+    try {
+        int dato = Integer.parseInt(txtdato.getText());
+        String resultado = this.simulador.buscar(dato);
+        JOptionPane.showMessageDialog(null, resultado);
+        txtdato.setText("");
+        txtdato.requestFocus();
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Ingrese un número válido", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton InOrden;
-    private javax.swing.JButton PostOrden;
-    private javax.swing.JButton PreOrden;
     private javax.swing.JButton botonInsertar;
-    private javax.swing.JTextArea impresion;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JInternalFrame jInternalArbolB;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuInorden;
+    private javax.swing.JMenuItem jMenuPostorden;
+    private javax.swing.JMenuItem jMenuPreorden;
+    private javax.swing.JPanel jPanelInicial;
+    private javax.swing.JLabel lblImpresion;
     private javax.swing.JTextField txtdato;
     // End of variables declaration//GEN-END:variables
 }

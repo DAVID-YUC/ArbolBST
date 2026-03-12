@@ -28,8 +28,7 @@ import javax.swing.JPanel;
     else if (valor> actual.valor)
         actual.derecho = insertarRecursivo(actual.derecho, valor);
     return actual;
-    
-    }
+    } 
     
     public LinkedList Inorden() {
         LinkedList recorrido = new LinkedList();
@@ -65,16 +64,18 @@ import javax.swing.JPanel;
     private void recorridoInordenRecursivo(Nodo actual, LinkedList recorrido) {
      if (actual != null) {
      recorridoInordenRecursivo(actual.getIzquierdo(),recorrido);
-     recorrido.add(actual.getValor());
+     recorrido.add(actual.getValor()+ (" ,"));
      recorridoInordenRecursivo(actual.getDerecho(), recorrido);
+     System.out.println("InOrden :"+actual.valor +"");
 }
 }
     
      private void recorridoPreordenRecursivo(Nodo actual, LinkedList recorrido) {
      if (actual != null) {
-     recorrido.add(actual.getValor());
+     recorrido.add(actual.getValor()+ (" ,"));
      recorridoPreordenRecursivo(actual.getIzquierdo(),recorrido);
      recorridoPreordenRecursivo(actual.getDerecho(), recorrido);
+     System.out.println("PreOrden :"+actual.valor +"");
 }
 }
      
@@ -82,36 +83,39 @@ import javax.swing.JPanel;
      if (actual != null) {
      recorridoPostordenRecursivo(actual.getIzquierdo(),recorrido);
      recorridoPostordenRecursivo(actual.getDerecho(), recorrido);
-     recorrido.add(actual.getValor());
-     System.out.println(actual.valor +"");
+     recorrido.add(actual.getValor()+ (" ,"));
+     System.out.println("PostOrden :"+actual.valor +"");
 }
 }
-     
-     public boolean existe(int dato) {
-        Nodo aux = raiz;
-        while (aux != null) {
-            if (dato == aux.getValor()) {
+         
+    
+    public boolean existe(int dato) {
+        Nodo buscar = raiz;
+        while (buscar != null) {
+            if (dato == buscar.getValor()) {
                 return true;
-            } else if (dato > aux.getValor()) {
-                aux = aux.getDerecho();
+            } else if (dato > buscar.getValor()) {
+                buscar = buscar.getDerecho();
             } else {
-                aux = aux.getIzquierdo();
+                buscar = buscar.getIzquierdo();
             }
         }
         return false;
     }
-     
-     private void altura(Nodo aux, int nivel) {
-        if (aux != null) {
-            altura(aux.getIzquierdo(), nivel + 1);
-            alt = nivel;
-            altura(aux.getDerecho(), nivel + 1);
-        }
+    
+     public int obtenerAltura(Nodo actual){
+        if(actual == null) return -1;
+        return 1 + Math.max(obtenerAltura(actual.izquierdo), obtenerAltura(actual.derecho));
     }
-     
-     public int getAltura() {
-        altura(raiz, 1);
-        return alt;
+    
+    public int obtenerNivel(Nodo actual, int nodo, int nivel){
+        if(actual == null) return -1;
+        if(actual.valor == nodo) return nivel;
+        
+        if(nodo<actual.valor) 
+            return obtenerNivel(actual.izquierdo, nodo, nivel+1);
+        else
+            return obtenerNivel(actual.derecho, nodo, nivel+1);
     }
     
      public JPanel getdibujo() {
