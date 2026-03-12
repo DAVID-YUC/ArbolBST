@@ -118,6 +118,41 @@ import javax.swing.JPanel;
             return obtenerNivel(actual.derecho, nodo, nivel+1);
     }
     
+    public Nodo eliminar(Nodo raiz, int valor) {
+    if (raiz == null) {
+        return null;
+    }
+    if (valor < raiz.valor) {
+        raiz.izquierdo = eliminar(raiz.izquierdo, valor);
+    } 
+    else if (valor > raiz.valor) {
+        raiz.derecho = eliminar(raiz.derecho, valor);
+    } 
+    else {
+        if (raiz.izquierdo == null) {
+            return raiz.derecho;
+        }
+        if (raiz.derecho == null) {
+            return raiz.izquierdo;
+        }
+        raiz.valor = minimo(raiz.derecho);
+        raiz.derecho = eliminar(raiz.derecho, raiz.valor);
+    }
+    return raiz;
+}
+    
+    
+    public int minimo(Nodo nodo) {
+    int min = nodo.valor;
+    while (nodo.izquierdo != null) {
+        min = nodo.izquierdo.valor;
+        nodo = nodo.izquierdo;
+    }
+    return min;
+    }
+    
+    
+    
      public JPanel getdibujo() {
         return new ArbolGrafico(this);
     }

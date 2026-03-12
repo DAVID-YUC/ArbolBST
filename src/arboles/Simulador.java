@@ -18,7 +18,7 @@ public class Simulador {
     public boolean insertar(Integer valor) {
         return (this.miArbol.agregar(valor));
     }
-    //metodo para mostrar los recorridos del arbol
+    //METODOS RECORRIDOS ARBOLES
     public String preOrden() {
         LinkedList rec = this.miArbol.preOrden();
         return (recorrido(rec, "Recorrido PreOrden    "));
@@ -47,7 +47,7 @@ public class Simulador {
 
 
     
-    //Metodo para buscar dato en el nodo
+    //METODO BUSCAR DATO
     public String buscar(Integer dato) {
     boolean Encontrado = this.miArbol.existe(dato);
     String resultado = "Nodo: " + dato;
@@ -61,6 +61,13 @@ public class Simulador {
         resultado += "No se encuentra en el arbol";
     }
     return resultado;
+}
+    
+    //METODO ELIMINAR NODO
+    public void eliminar(Integer valor) {
+    this.miArbol.setRaiz(
+        this.miArbol.eliminar(this.miArbol.getRaiz(), valor)
+    );
 }
     public JPanel getDibujo() {
         return this.miArbol.getdibujo();
