@@ -4,9 +4,14 @@
  */
 package arboles;
 
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.*;
+import java.io.FileWriter;
 import java.awt.BorderLayout;
 import java.awt.Rectangle;
+import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
@@ -42,68 +47,70 @@ public class VistaArbol extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFileChooser1 = new javax.swing.JFileChooser();
         jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         jPanelInicial = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jInternalArbolB = new javax.swing.JInternalFrame();
         txtdato = new javax.swing.JTextField();
         lblImpresion = new javax.swing.JLabel();
-        botonInsertar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         jPanelAtajos = new javax.swing.JPanel();
         lblInorden = new javax.swing.JLabel();
         lblPreorden = new javax.swing.JLabel();
         lblPostordenn = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        btnBuscar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuRecorridos = new javax.swing.JMenu();
         jMenuInorden = new javax.swing.JMenuItem();
         jMenuPreorden = new javax.swing.JMenuItem();
         jMenuPostorden = new javax.swing.JMenuItem();
         jMenuOptions = new javax.swing.JMenu();
+        jMenuArchivo = new javax.swing.JMenuItem();
+        jMenuSubir = new javax.swing.JMenuItem();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setResizable(false);
 
-        jPanelInicial.setBackground(new java.awt.Color(153, 255, 255));
+        jPanelInicial.setBackground(new java.awt.Color(204, 255, 255));
         jPanelInicial.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 10))); // NOI18N
 
         jDesktopPane1.setBackground(new java.awt.Color(0, 51, 255));
         jDesktopPane1.setOpaque(false);
 
-        jInternalArbolB.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jInternalArbolB.setBackground(new java.awt.Color(204, 255, 255));
+        jInternalArbolB.setBorder(null);
         jInternalArbolB.setResizable(true);
-        jInternalArbolB.setEnabled(false);
         jInternalArbolB.setFocusCycleRoot(false);
+        jInternalArbolB.setOpaque(true);
         jInternalArbolB.setVisible(true);
 
         javax.swing.GroupLayout jInternalArbolBLayout = new javax.swing.GroupLayout(jInternalArbolB.getContentPane());
         jInternalArbolB.getContentPane().setLayout(jInternalArbolBLayout);
         jInternalArbolBLayout.setHorizontalGroup(
             jInternalArbolBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 538, Short.MAX_VALUE)
+            .addGap(0, 540, Short.MAX_VALUE)
         );
         jInternalArbolBLayout.setVerticalGroup(
             jInternalArbolBLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 414, Short.MAX_VALUE)
+            .addGap(0, 416, Short.MAX_VALUE)
         );
 
         jDesktopPane1.add(jInternalArbolB);
         jInternalArbolB.setBounds(20, 10, 540, 440);
 
-        lblImpresion.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-
-        botonInsertar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        botonInsertar.setText("Insertar");
-        botonInsertar.addActionListener(new java.awt.event.ActionListener() {
+        txtdato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonInsertarActionPerformed(evt);
+                txtdatoActionPerformed(evt);
             }
         });
+
+        lblImpresion.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -113,15 +120,8 @@ public class VistaArbol extends javax.swing.JFrame {
             }
         });
 
-        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-
-        jPanelAtajos.setBackground(new java.awt.Color(204, 255, 255));
+        jPanelAtajos.setBackground(new java.awt.Color(153, 211, 239));
+        jPanelAtajos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblInorden.setText("InOrden:  Shift+C");
 
@@ -147,7 +147,7 @@ public class VistaArbol extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanelAtajosLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel4)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanelAtajosLayout.setVerticalGroup(
@@ -164,38 +164,67 @@ public class VistaArbol extends javax.swing.JFrame {
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
+        btnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("X");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Sylfaen", 3, 14)); // NOI18N
+        jLabel1.setText("Ingresar Valor");
+
         javax.swing.GroupLayout jPanelInicialLayout = new javax.swing.GroupLayout(jPanelInicial);
         jPanelInicial.setLayout(jPanelInicialLayout);
         jPanelInicialLayout.setHorizontalGroup(
             jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicialLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblImpresion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanelInicialLayout.createSequentialGroup()
-                        .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 574, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanelAtajos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(botonInsertar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtdato)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addGap(0, 21, Short.MAX_VALUE)
+                        .addComponent(lblImpresion, javax.swing.GroupLayout.PREFERRED_SIZE, 682, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInicialLayout.createSequentialGroup()
+                        .addComponent(jDesktopPane1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanelAtajos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtdato, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInicialLayout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanelInicialLayout.setVerticalGroup(
             jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelInicialLayout.createSequentialGroup()
-                .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanelInicialLayout.createSequentialGroup()
-                        .addContainerGap()
+                .addGroup(jPanelInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelInicialLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelInicialLayout.createSequentialGroup()
-                        .addGap(17, 17, 17)
+                        .addGap(8, 8, 8)
+                        .addComponent(jButton1)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtdato, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botonInsertar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -208,6 +237,7 @@ public class VistaArbol extends javax.swing.JFrame {
 
         jMenuBar1.setBackground(new java.awt.Color(0, 0, 0));
 
+        jMenuRecorridos.setBackground(new java.awt.Color(153, 211, 239));
         jMenuRecorridos.setForeground(new java.awt.Color(255, 255, 255));
         jMenuRecorridos.setIcon(new javax.swing.ImageIcon("C:\\Users\\mayno\\OneDrive\\Documentos\\UMG CICLO 4\\PROGRAMACION II\\ImagenesPortada\\Administrador\\estadisticas.png")); // NOI18N
         jMenuRecorridos.setText("Recorridos");
@@ -241,9 +271,28 @@ public class VistaArbol extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuRecorridos);
 
+        jMenuOptions.setBackground(new java.awt.Color(153, 211, 239));
         jMenuOptions.setForeground(new java.awt.Color(255, 255, 255));
         jMenuOptions.setIcon(new javax.swing.ImageIcon("C:\\Users\\mayno\\OneDrive\\Documentos\\UMG CICLO 4\\PROGRAMACION II\\ImagenesPortada\\Administrador\\reloj.png")); // NOI18N
         jMenuOptions.setText("Opciones");
+
+        jMenuArchivo.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuArchivo.setText("Guardar");
+        jMenuArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuArchivoActionPerformed(evt);
+            }
+        });
+        jMenuOptions.add(jMenuArchivo);
+
+        jMenuSubir.setText("Subir");
+        jMenuSubir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSubirActionPerformed(evt);
+            }
+        });
+        jMenuOptions.add(jMenuSubir);
+
         jMenuBar1.add(jMenuOptions);
 
         setJMenuBar(jMenuBar1);
@@ -252,21 +301,15 @@ public class VistaArbol extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanelInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanelInicial.getAccessibleContext().setAccessibleName("");
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void botonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInsertarActionPerformed
-        insertar();
-    }//GEN-LAST:event_botonInsertarActionPerformed
 
     private void jMenuInordenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInordenActionPerformed
         inorden();
@@ -285,10 +328,26 @@ public class VistaArbol extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int valor = Integer.parseInt(txtdato.getText());
-        simulador.eliminar(valor);
-        repintarArbol();
+        eliminar();
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void jMenuArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuArchivoActionPerformed
+        guardarTXT();
+    }//GEN-LAST:event_jMenuArchivoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtdatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtdatoActionPerformed
+        insertar();
+        
+    }//GEN-LAST:event_txtdatoActionPerformed
+
+    private void jMenuSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSubirActionPerformed
+      cargarDesdeArchivo("C:\\Users\\mayno\\OneDrive\\Desktop\\ARBOL.txt");
+      repintarArbol();
+    }//GEN-LAST:event_jMenuSubirActionPerformed
 
     public void complementos(){
         this.repintarArbol();
@@ -334,6 +393,47 @@ public class VistaArbol extends javax.swing.JFrame {
         this.lblImpresion.setText(recorrido);
     }
     
+    private void guardarTXT() {
+
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setSelectedFile(new File("recorridos_arbol.txt"));
+
+    int opcion = fileChooser.showSaveDialog(this);
+
+    if(opcion == JFileChooser.APPROVE_OPTION){
+
+        File archivo = fileChooser.getSelectedFile();
+
+        try{
+
+            FileWriter writer = new FileWriter(archivo);
+
+            writer.write("Recorridos del Árbol Binario\n\n");
+
+            writer.write("Inorden: " + simulador.inOrden()+ "\n");
+            writer.write("Preorden: " + simulador.preOrden()+ "\n");
+            writer.write("Postorden: " + simulador.postOrden()+ "\n");
+
+            writer.close();
+
+            JOptionPane.showMessageDialog(this,"Archivo TXT guardado correctamente");
+
+        }catch(Exception e){
+
+            JOptionPane.showMessageDialog(this,"Error al guardar el archivo");
+
+        }
+
+    }
+
+}
+    
+    public void eliminar (){
+    int valor = Integer.parseInt(txtdato.getText());
+        simulador.eliminar(valor);
+        repintarArbol();
+    }
+    
     public void insertar (){
     try {
             int dato = Integer.parseInt(txtdato.getText());
@@ -349,6 +449,28 @@ public class VistaArbol extends javax.swing.JFrame {
         }
     }
     
+public void cargarDesdeArchivo(String nombreArchivo) {
+    try {
+        BufferedReader br = new BufferedReader(new FileReader(nombreArchivo));
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            String[] valores = linea.split(",");
+
+            for (String v : valores) {
+                int numero = Integer.parseInt(v.trim());
+                simulador.insertar(numero);
+            }
+        }
+
+        br.close();
+        System.out.println("Datos cargados al árbol correctamente.");
+
+    } catch (IOException e) {
+        System.out.println("Error al leer el archivo: " + e.getMessage());
+    }
+}
+    
     public void buscar (){
     try {
         int dato = Integer.parseInt(txtdato.getText());
@@ -363,19 +485,23 @@ public class VistaArbol extends javax.swing.JFrame {
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonInsertar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JFileChooser jFileChooser1;
     private javax.swing.JInternalFrame jInternalArbolB;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JMenuItem jMenuArchivo;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuInorden;
     private javax.swing.JMenu jMenuOptions;
     private javax.swing.JMenuItem jMenuPostorden;
     private javax.swing.JMenuItem jMenuPreorden;
     private javax.swing.JMenu jMenuRecorridos;
+    private javax.swing.JMenuItem jMenuSubir;
     private javax.swing.JPanel jPanelAtajos;
     private javax.swing.JPanel jPanelInicial;
     private javax.swing.JLabel lblImpresion;

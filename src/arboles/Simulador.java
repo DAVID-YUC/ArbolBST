@@ -44,9 +44,7 @@ public class Simulador {
         }
         return (r);
     }
-
-
-    
+     
     //METODO BUSCAR DATO
     public String buscar(Integer dato) {
     boolean Encontrado = this.miArbol.existe(dato);
@@ -68,6 +66,9 @@ public class Simulador {
     this.miArbol.setRaiz(
         this.miArbol.eliminar(this.miArbol.getRaiz(), valor)
     );
+}
+    public void cargarArchivo(String ruta){
+    this.miArbol.cargarFile(ruta);
 }
     public JPanel getDibujo() {
         return this.miArbol.getdibujo();

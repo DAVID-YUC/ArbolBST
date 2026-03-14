@@ -1,8 +1,11 @@
 
 package arboles;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Scanner;
 import javax.swing.JPanel;
 
  public class ArbolBinario {
@@ -151,7 +154,24 @@ import javax.swing.JPanel;
     return min;
     }
     
-    
+    void cargarFile(String ruta){
+        try{
+            File archivo = new File(ruta);
+            Scanner lector = new Scanner(archivo);
+            lector.useDelimiter("[,\\s]+");
+            
+            while(lector.hasNextInt()){
+                int valor = lector.nextInt();
+                this.agregar(valor);
+            }
+            lector.close();
+            System.out.println("Datos cargados exitosamente desde: " + ruta);
+        } catch(FileNotFoundException e) {
+            System.out.println("Error: Nose encontro el archivo en la ruta");
+        } catch (Exception e){
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
     
      public JPanel getdibujo() {
         return new ArbolGrafico(this);
